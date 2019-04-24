@@ -17,4 +17,6 @@ def clasification(x1,x2,x3,x4,x5):
                 warm_start=False)
     clf.fit(features, labels)
     predictions = clf.predict([[x1,x2,x3,x4,x5]])
-    return predictions[0]
+    score = clf.predict_proba([[x1,x2,x3,x4,x5]])
+    print(predictions[0],score[0][0], score[0][1])
+    return predictions[0], score[0][0], score[0][1]

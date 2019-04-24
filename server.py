@@ -15,7 +15,11 @@ def get_clasification():
     x3 = data['typeroom']
     x4 = data['months']
     x5 = data['rooms']
-    return jsonify({'clasification': clasification(x1,x2,x3,x4,x5)})
+    cls, negative, positive = clasification(x1,x2,x3,x4,x5)
+    print(cls)
+    print(negative)
+    print(positive)
+    return jsonify({'clasification': float(cls) , 'positive' : float(positive), 'negative' : float(negative)})
 
 
 # Run Server
