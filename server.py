@@ -16,8 +16,9 @@ def create_clasification():
     x3 = data['typeroom']
     x4 = data['months']
     x5 = data['rooms']
+    x6 = data['date']
     cls, negative, positive = clasification(x1,x2,x3,x4,x5)
-    insert(x1,x2,x3,x4,x5,float(cls), float(positive), float(negative))
+    insert(x1,x2,x3,x4,x5,float(cls), float(positive), float(negative),x6)
     return jsonify({'clasification': float(cls) , 'positive' : float(positive), 'negative' : float(negative)})
 
 @app.route('/clasification', methods=['GET'])

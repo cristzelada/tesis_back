@@ -2,7 +2,7 @@ from pymongo import MongoClient
 
 client = MongoClient("mongodb+srv://peracrist:peracrist@cluster0-yuxgu.mongodb.net/peracrist?retryWrites=true")
 
-def insert(weekday, chanel, typeroom, months, rooms, clasification, positive, negative):
+def insert(weekday, chanel, typeroom, months, rooms, clasification, positive, negative, date):
     db = client["peracrist"]
     reservations = db.reservation
     document = { 
@@ -14,6 +14,7 @@ def insert(weekday, chanel, typeroom, months, rooms, clasification, positive, ne
         "clasification": clasification,
         "positive" : positive,
         "negative" : negative
+        "date" : date
     }
     reservation = reservations.insert_one(document)
 
@@ -34,3 +35,8 @@ def getAll():
             "negative" : reservation["negative"]
         })
     return data
+
+def deleteALl():
+    db = client["peracrist"]
+    reservations = db.reservation
+    reservations.delete_many({})
