@@ -13,7 +13,7 @@ def insert(weekday, chanel, typeroom, months, rooms, clasification, positive, ne
         "rooms": rooms, 
         "clasification": clasification,
         "positive" : positive,
-        "negative" : negative
+        "negative" : negative,
         "date" : date
     }
     reservation = reservations.insert_one(document)
@@ -32,7 +32,8 @@ def getAll():
             "rooms": reservation["rooms"], 
             "clasification": reservation["clasification"],
             "positive" : reservation["positive"],
-            "negative" : reservation["negative"]
+            "negative" : reservation["negative"],
+            "date" : reservation["date"]
         })
     return data
 
