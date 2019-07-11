@@ -11,13 +11,14 @@ CORS(app)
 @app.route('/clasification', methods=['POST'])
 def create_clasification():
     data = request.get_json()
-    x1 = data['weekday']
-    x2 = data['chanel']
-    x3 = data['typeroom']
-    x4 = data['months']
-    x5 = data['rooms']
-    x6 = data['date']
-    cls, negative, positive = clasification(x1,x2,x3,x4,x5)
+    x1 = data['ReservationMonth']
+    x2 = data['ChannelCode']
+    x3 = data['TypeRoom']
+    x4 = data['LeadTime']
+    x5 = data['NumberRooms']
+    x6 = data['NumNights']
+    x7 = data['RoomRate']
+    cls, negative, positive = clasification(x1,x2,x3,x4,x5,x6,x7)
     insert(x1,x2,x3,x4,x5,float(cls), float(positive), float(negative),x6)
     return jsonify({'clasification': float(cls) , 'positive' : float(positive), 'negative' : float(negative)})
 
